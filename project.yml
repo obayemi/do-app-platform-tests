@@ -1,5 +1,25 @@
+services:
+  - name: "do-app-platform-tests"
+
 packages:
-  - name: "hello"
+  - name: hello
     functions:
       - name: hello
         runtime: 'nodejs:default'
+        routes:
+        - path: /hello
+
+static_sites:
+  - name: landing
+    source_dir: landing
+    routes:
+      - path: /
+
+services:
+  - name: app
+    source_dir: app
+    build_command: npm run build
+    run_command: node ./build
+    http_port: 3000
+    routes:
+    - path: /
