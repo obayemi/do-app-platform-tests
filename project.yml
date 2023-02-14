@@ -1,0 +1,5 @@
+packages:
+  - name: "hello"
+    functions:
+      - name: hello
+        runtime: 'nodejs:default'
